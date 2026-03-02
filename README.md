@@ -5,17 +5,17 @@ A modern, fully responsive multi-step form built with HTML, CSS, and JavaScript.
 PROJECT OVERVIEW
 
 Emperor Multi Form allows users to:
-✅ Complete each step in a guided sequence
+Complete each step in a guided sequence
 
-✅ Navigate back to update selections
+Navigate back to update selections
 
-✅ View a dynamic order summary
+View a dynamic order summary
 
-✅ Receive real-time validation feedback
+Receive real-time validation feedback
 
-✅ Experience responsive design across devices
+Experience responsive design across devices
 
-✅ Interact with hover and focus states
+Interact with hover and focus states
 
 This project was built to practice complex form handling and state management in vanilla JavaScript.
 
@@ -84,3 +84,4 @@ Star the repository ⭐
 Fork it
 Share feedback
 Suggest improvements
+
