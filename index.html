@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emperor - Multi-Step Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="form-styles.css" />
+  </head>
+  <body>
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="step-indicators">
+        <div class="step-indicator active" data-step="1">
+          <div class="step-number">01</div>
+          <div class="step-label">PLAN</div>
+        </div>
+
+        <div class="step-indicator" data-step="2">
+          <div class="step-number">02</div>
+          <div class="step-label">ADD-ONS</div>
+        </div>
+
+        <div class="step-indicator" data-step="3">
+          <div class="step-number">03</div>
+          <div class="step-label">INFO</div>
+        </div>
+
+        <div class="step-indicator" data-step="4">
+          <div class="step-number">04</div>
+          <div class="step-label">CONFIRM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Container-->
+    <div class="form-container">
+      <!-- Step 1: Select Plan -->
+      <div class="form-step active" data-step="1">
+        <div class="step-header">
+          <div class="step-badge">STEP 01</div>
+          <h1 class="step-title">SELECT YOUR PLAN</h1>
+          <p class="step-description">
+            Choose the plan that best suits your needs. You can switch any time.
+          </p>
+        </div>
+
+        <div class="billing toggle">
+          <label class="toggle-option">
+            <input type="radio" name="billing" value="monthly" checked />
+            <span class="toggle-label">MONTHLY</span>
+          </label>
+          <label class="toggle-option">
+            <input type="radio" name="billing" value="yearly" />
+            <span class="toggle-label">YEARLY</span>
+            <span class="toggle-badge">20%</span>
+          </label>
+        </div>
+
+        <div class="plan-cards">
+          <div class="plan-card" data-plan="basic">
+            <div class="plan-header">
+              <div class="plan-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                  />
+                </svg>
+              </div>
+              <h3 class="plan-name">BASIC</h3>
+            </div>
+            <div class="plan-price">
+              <span class="price-amount" data-monthly="9" data-yearly="72"
+                >$9</span
+              >
+              <span class="price-period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li>10GB Storage</li>
+              <li>Basic Support</li>
+              <li>Single User</li>
+              <li>Email Alerts</li>
+            </ul>
+            <button class="plan-select-btn" type="button">SELECT PLAN</button>
+          </div>
+
+          <div class="plan-card featured" data-plan="pro">
+            <div class="featured-badge">POPULAR</div>
+            <div class="plan-header">
+              <div class="plan-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
+              <h3 class="plan-name">PRO</h3>
+            </div>
+            <div class="plan-price">
+              <span class="price-amount" data-monthly="19" data-yearly="152"
+                >$19</span
+              >
+              <span class="price-period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li>100GB Storage</li>
+              <li>Priority Support</li>
+              <li>Up to 5 Users</li>
+              <li>Advanced Analytics</li>
+            </ul>
+            <button class="plan-select-btn" type="button">SELECT PLAN</button>
+          </div>
+
+          <div class="plan-card" data-plan="enterprise">
+            <div class="plan-header">
+              <div class="plan-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              </div>
+              <h3 class="plan-name">ENTERPRISE</h3>
+            </div>
+            <div class="plan-price">
+              <span class="price-amount" data-monthly="39" data-yearly="312"
+                >$39</span
+              >
+              <span class="price-period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li>Unlimited Storage</li>
+              <li>24/7 Support</li>
+              <li>Unlimited Users</li>
+              <li>Custom Integrations</li>
+            </ul>
+            <button class="plan-select-btn" type="button">SELECT PLAN</button>
+          </div>
+        </div>
+
+        <div class="error-message" id="step1Error"></div>
+
+        <div class="step-actions">
+          <button class="btn-next" type="button" onclick="nextStep()">
+            NEXT STEP
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Add-ons -->
+      <div class="form-step" data-step="2">
+        <div class="step-header">
+          <div class="step-badge">STEP 02</div>
+          <h1 class="step-title">PICK ADD-ONS</h1>
+          <p class="step-description">
+            Enhance your plan with optional features.
+          </p>
+        </div>
+
+        < class="addon-list">
+        <label class="addon-card">
+          <input
+            type="checkbox"
+            name="addon"
+            value="online-service"
+            data-price-monthly="1"
+            data-price-yearly="10"
+          />
+          <div class="addon-content">
+            <div class="addon-info">
+              <div class="addon-check">✓</div>
+              <div class="addon-details">
+                <h3 class="addon-name">Online Services</h3>
+                <p class="addon-description">Access to multiplayer games</p>
+              </div>
+            </div>
+            <div class="addon-price">+$1.00/mo</div>
+          </div>
+        </label>
+
+        <label class="addon-card">
+          <input
+            type="checkbox"
+            name="addon"
+            value="larger-storage"
+            data-price-monthly="2"
+            data-price-yearly="20"
+          />
+          <div class="addon-content">
+            <div class="addon-info">
+              <div class="addon-check">✓</div>
+              <div class="addon-details">
+                <h3 class="addon-name">Larger Storage</h3>
+                <p class="addon-description">Extra 1TB of cloud save</p>
+              </div>
+            </div>
+            <div class="addon-price">+$2.00/mo</div>
+          </div>
+        </label>
+
+        <label class="addon-card">
+          <input
+            type="checkbox"
+            name="addon"
+            value="customizable-profile"
+            data-price-monthly="2"
+            data-price-yearly="20"
+          />
+          <div class="addon-content">
+            <div class="addon-info">
+              <div class="addon-check">✓</div>
+              <div class="addon-details">
+                <h3 class="addon-name">Customizable Profile</h3>
+                <p class="addon-description">Custom theme on your profile</p>
+              </div>
+            </div>
+            <div class="addon-price">+$2.00/mo</div>
+          </div>
+        </label>
+
+        <div class="step-actions">
+          <button class="btn-back" type="button" onclick="previousStep()">
+            ← GO BACK
+          </button>
+          <button class="btn-next" type="button" onclick="nextStep()">
+            NEXT STEP →
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Personal Info -->
+      <div class="form-step" data-step="3">
+        <div class="step-header">
+          <div class="step-badge">STEP 03</div>
+          <h1 class="step-title">PERSONAL INFORMATION</h1>
+          <p class="step-description">
+            Please provide your details to complete the order.
+          </p>
+        </div>
+
+        <form class="info-form" id="personalInfoForm">
+          <div class="form-group">
+            <label class="form-label" for="fullName">
+              FULL NAME
+              <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              class="form-input"
+              placeholder="e.g. Martin Luther"
+              required
+            />
+            <div class="field-error" id="nameError"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">
+              EMAIL ADDRESS
+              <span class="required">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="e.g. martin.luther@example.com"
+              required
+            />
+            <div class="field-error" id="emailError"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">
+              PHONE NUMBER
+              <span class="required">*</span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              class="form-input"
+              placeholder="e.g. +1 234 567 8900"
+              required
+            />
+            <div class="field-error" id="phoneError"></div>
+          </div>
+        </form>
+
+        <div class="step-actions">
+          <button class="btn-back" type="button" onclick="previousStep()">
+            ← GO BACK
+          </button>
+          <button class="btn-next" type="button" onclick="nextStep()">
+            NEXT STEP →
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Summary -->
+      <div class="form-step" data-step="4">
+        <div class="step-header">
+          <div class="step-badge">STEP 04</div>
+          <h1 class="step-title">FINISHING UP</h1>
+          <p class="step-description">
+            Review your selected plan and personal information before
+            confirming.
+          </p>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-header">
+            <div class="summary-plan">
+              <h3 id="summaryPlanName">Pro (Monthly)</h3>
+              <button class="change-link" type="button" onclick="goToStep(1)">
+                Change Plan
+              </button>
+            </div>
+            <div class="summary-plan-price" id="summaryPlanPrice">
+              $19.00/mo
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-addons" id="summaryAddons">
+          <!-- Add-ons will be dynamically added here -->
+          <div class="summary-addon">
+            <span class="addon-name">Online Services</span>
+            <span class="addon-price">+$1.00/mo</span>
+          </div>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-total">
+          <div class="total-label" id="totalLabel">Total (per month)</div>
+          <div class="total-amount" id="totalAmount">$20.00/mo</div>
+        </div>
+      </div>
+      <!-- CLOSE-->
+
+      <div class="step-actions">
+        <button class="btn-back" type="button" onclick="previousStep()">
+          ← GO BACK
+        </button>
+        <button class="btn-confirm" type="button" onclick="confirmOrder()">
+          CONFIRM ORDER
+        </button>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="form-step" data-step="5">
+      <div class="success-screen">
+        <div class="success-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </div>
+        <h1 class="success-title">Thank you for your order!</h1>
+        <p class="success-message">
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@example.com.
+        </p>
+        <button class="btn-reset" type="button" onclick="resetForm()">
+          START OVER
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

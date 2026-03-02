@@ -1,0 +1,774 @@
+:root {
+    --electric-blue: #7DF9FF;
+    --neon-yellow: #FFFF33;
+    --hot-pink: #FF69B4;
+    --black: #000000;
+    --white: #FFFFFF;
+    --gray-100: #F5F5F5;
+    --gray-200: #E0E0E0;
+    --gray-300: #BDBDBD;
+    --gray-900: #212121;
+    --shadow-brutal: 8px 8px 0px #000000;
+    --shadow-small: 4px 4px 0px #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--electric-blue);
+    color: var(--black);
+    min-height: 100vh;
+    padding: 40px 20px;
+    background-image: 
+    repeating-linear-gradient(0deg, transparent 20px, rgba(0, 0, 0, 0.03) 20px, rgba(0, 0, 0, 0.03) 40px);
+}
+
+/* Progress Container */
+.progress-container {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+}
+
+.progress-bar {
+    height: 12px;
+    background: var(--white);
+    border: 4px solid var(--black);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--electric-blue);
+    width: 25%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-indicators {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.step-indicator {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.step-indicator:hover {
+    transform: translateY(-2px);
+}
+
+.step-number {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: var(--white);
+    border: 4px solid var(--black);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    transition: all 0.3s;
+}
+
+.step-indicator.active .step-number {
+    background: var(--electric-blue);
+    color: var(--white);
+    box-shadow: var(--shadow-small);
+}
+
+.step-indicator.completed .step-number {
+    background: var(--neon-yellow);
+    color: var(--black);
+}
+
+.step-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gray-900);
+}
+
+.step-indicator.active .step-label {
+    color: var(--electric-blue);
+}
+
+/* Form Container */
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 6px solid var(--black);
+    box-shadow: var(--shadow-brutal);
+    padding: 60px;
+    position: relative;
+}
+
+.form-step {
+    display: none;
+    animation: slideIn 0.4s ease-out;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Step Header */
+.step-header {
+    margin-bottom: 50px;
+}
+
+.step-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: var(--neon-yellow);
+    color: var(--black);
+    padding: 8px 20px;
+    border: 3px solid var(--black);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-small);
+}
+
+.step-title {
+    font-family: 'Staatliches', cursive;
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.step-description {
+    font-size: 1.1rem;
+    color: var(--gray-900);
+    line-height: 1.6;
+}
+
+/* Billing Toggle */
+.billing-toggle {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding: 10px;
+    background: var(--gray-100);
+    border: 4px solid var(--black);
+    width: fit-content;
+}
+
+.toggle-option {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.toggle-label {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 12px 24px;
+    background: var(--white);
+    border: 3px solid var(--black);
+    transition: all 0.2s;
+}
+
+.toggle-option input:checked + .toggle-label {
+    background: var(--electric-blue);
+    color: var(--white);
+    box-shadow: var(--shadow-small);
+}
+
+.toggle-badge {
+    background: var(--hot-pink);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border: 2px solid var(--black);
+}
+
+/* Plan Cards */
+.plan-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.plan-card {
+    background: var(--white);
+    border: 5px solid var(--black);
+    padding: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.plan-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px var(--black);
+}
+
+.plan-card.selected {
+    background: var(--electric-blue);
+    color: var(--white);
+}
+
+.plan-card.selected .plan-select-btn {
+    background: var(--neon-yellow);
+    color: var(--black);
+}
+
+.plan-card.featured {
+    border-color: var(--electric-blue);
+    border-width: 6px;
+}
+
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    right: -20px;
+    background: var(--hot-pink);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 6px 16px;
+    border: 3px solid var(--black);
+    letter-spacing: 1px;
+}
+
+.plan-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.plan-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--neon-yellow);
+    border: 3px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plan-card.selected .plan-icon {
+    background: var(--white);
+    color: var(--electric-blue);
+}
+
+.plan-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--black);
+}
+
+.plan-name {
+    font-family: 'Staatliches', cursive;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.plan-price {
+    margin-bottom: 25px;
+}
+
+.price-amount {
+    font-family: 'Space Mono', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.plan-features {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.plan-features li {
+    padding: 10px 0;
+    border-bottom: 2px solid var(--gray-200);
+    font-size: 1.1rem;
+}
+
+.plan-card.selected .plan-features li {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.plan-select-btn {
+    width: 100%;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+}
+
+.plan-select-btn:hover {
+    background: var(--electric-blue);
+    box-shadow: var(--shadow-small);
+}
+
+/* Add-Ons */
+.addon-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.addon-card {
+    background: var(--white);
+    border: 4px solid var(--black);
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+}
+
+.addon-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--black);
+}
+
+.addon-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+.addon-card input:checked ~ .addon-content {
+    background: var(--electric-blue);
+    color: var(--white);
+    margin: -25px;
+    padding: 25px;
+    border: none;
+}
+
+.addon-card input:checked ~ .addon-content .addon-check {
+    background: var(--neon-yellow);
+    color: var(--black);
+    border-color: var(--black);
+}
+
+.addon-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.addon-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.addon-check {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--black);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: all 0.3s;
+}
+
+.addon-card:not(:has(input:checked)) .addon-check {
+    opacity: 0.2;
+}
+
+.addon-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.addon-dsecription {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.addon-price {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Personal Info Form */
+.info-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.required {
+    color: var(--hot-pink);
+}
+
+.form-input {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    padding: 18px 20px;
+    background: var(--white);
+    border: 4px solid var(--black);
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+}
+
+.form-input.error {
+    border-color: var(--hot-pink);
+}
+
+.field-error {
+    color: var(--hot-pink);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: none;
+}
+
+.field-error.show {
+    display: block;
+}
+
+.error-message {
+    background: var(--hot-pink);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    padding: 15px 20px;
+    border: 3px solid var(--black);
+    margin-bottom: 20px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Summary */
+.summary-card {
+    background: var(--gray-100);
+    border: 5px solid var(--black);
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.summary-plan h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.change-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--electric-blue);
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.change-link:hover {
+    color: var(--hot-pink);
+}
+
+.summary-plan-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.summary-divider {
+    height: 3px;
+    background: var(--black);
+    margin: 25px 0;
+}
+
+.summary-addons {
+    margin-bottom: 20px;
+}
+
+.summary-addon {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-size: 1rem;
+}
+
+.summary-addon-name {
+    color: var(--gray-900);
+}
+
+.summary-addon-price {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.total-label {
+    font-size: 1rem;
+    color: var(--gray-900);
+}
+
+.total-amount {
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--electric-blue);
+}
+
+/* Step Actions */
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.btn-back,
+.btn-next,
+.btn-confirm {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 18px 35px;
+    border: 4px solid var(--black);
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-back {
+    background: var(--white);
+    color: var(--black);
+}
+
+.btn-back:hover {
+    background: var(--gray-100);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-small);
+}
+
+.btn-next,
+.btn-confirm {
+    background: var(--electric-blue);
+    color: var(--white);
+    margin-left: auto;
+}
+
+.btn-next:hover,
+.btn-confirm:hover {
+    background: var(--hot-pink);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-small);
+}
+
+/* Success Screen */
+.success-screen {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.success-icon {
+    width: 120px;
+    height: 120px;
+    background: var(--neon-yellow);
+    border: 6px solid var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 40px;
+    box-shadow: var(--shadow-brutal);
+}
+
+.success-icon svg {
+    width: 60px;
+    height: 60px;
+    color: var(--black);
+}
+
+.success-title {
+    font-family: 'Staatliches', cursive;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.success-message {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--gray-900);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.btn-reset {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 18px 40px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+}
+
+.btn-reset:hover {
+    background: var(--electric-blue);
+    box-shadow: var(--shadow-small);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .form-container {
+        padding: 40px 25px;
+        border-width: 4px;
+    }
+
+    .step-title {
+        font-size: 2.5rem;
+    }
+
+    .step-indicators {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plan-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .step-actions {
+        flex-direction: column-reverse;
+    }
+
+    .btn-next,
+    .btn-confirm {
+        margin-left: 0;
+    }
+
+    .addon-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .success-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .step-indicators {
+        gap: 10px;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .step-label {
+        font-size: 0.65rem;
+    }
+}
+
+
+
+
+
+
